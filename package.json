@@ -1,0 +1,106 @@
+{
+  "name": "squeed-flow",
+  "displayName": "Squeed Flow Preview",
+  "description": "Preview Squeed JSON documents as interactive flow diagrams beside the editor.",
+  "version": "0.1.0",
+  "publisher": "seyiogunbowalesciphergfx",
+  "license": "AGPL-3.0",
+  "author": "seyi ogunbowale",
+  "icon": "media/icon.png",
+  "galleryBanner": {
+    "color": "#0f172a",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sciphergfx/squeed-flow-vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sciphergfx/squeed-flow-vscode/issues"
+  },
+  "homepage": "https://github.com/sciphergfx/squeed-flow-vscode#readme",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "json",
+    "diagram",
+    "flow",
+    "preview",
+    "squeed"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onWebviewPanel:squeedFlow.preview"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "squeedFlow.openPreview",
+        "title": "Open Preview to the Side",
+        "category": "Squeed Flow",
+        "icon": "$(open-preview)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "squeedFlow.openPreview",
+          "when": "resourceLangId == json || resourceLangId == jsonc",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "squeedFlow.openPreview",
+          "when": "editorLangId == json || editorLangId == jsonc"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "squeedFlow.openPreview",
+        "key": "ctrl+shift+v",
+        "mac": "cmd+shift+v",
+        "when": "editorTextFocus && (editorLangId == json || editorLangId == jsonc)"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "npm run typecheck && node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.webview.json",
+    "test": "npm run build && node tests/webview-smoke.mjs",
+    "test:integration": "node tests/integration/run.mjs",
+    "test:e2e": "node tests/integration/e2e.mjs",
+    "media": "node scripts/media.mjs",
+    "vscode:prepublish": "npm run build",
+    "package": "vsce package --no-dependencies",
+    "publish": "vsce publish --no-dependencies"
+  },
+  "devDependencies": {
+    "@chakra-ui/react": "^3.36.1",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@playwright/test": "^1.62.1",
+    "@squeed/flow-sdk": "^2.0.1",
+    "@types/node": "^22.10.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@types/vscode": "1.90.0",
+    "@vscode/test-electron": "^3.1.0",
+    "@vscode/vsce": "^3.3.0",
+    "esbuild": "^0.25.0",
+    "framer-motion": "^11.18.2",
+    "jsonc-parser": "^3.3.1",
+    "markdown-to-jsx": "^9.10.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.5.0",
+    "typescript": "^5.6.3"
+  }
+}
