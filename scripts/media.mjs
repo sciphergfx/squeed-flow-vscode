@@ -10,13 +10,27 @@ const dist = join(root, "dist/webview/");
 const media = join(root, "media");
 await mkdir(media, { recursive: true });
 
-// The Squeed mark is a white glyph on a transparent 38x38 canvas; place it on the
-// gallery banner color. Offsets center the glyph's visual bounds, not the viewBox.
-const glyph = await readFile(join(media, "squeed.svg"), "utf8");
-const icon = `<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
-  <rect width="256" height="256" rx="56" fill="#0f172a"/>
-  ${glyph.replace("<svg ", '<svg x="-24" y="-16" ').replace(/width="38" height="38"/, 'width="300" height="300"')}
+// media/squeed.svg is the Squeed mark as used in the SDK toolbar (white on transparent).
+// Present it like the Squeed desktop app icon: black mark on the brand cream, with the
+// glyph's visual bounds (not the viewBox) centered and spanning 66% of the height.
+const ICON_SIZE = 512;
+const BRAND_BACKGROUND = "#edecda";
+const GLYPH_HEIGHT_RATIO = 338 / 512;
+const glyph = (await readFile(join(media, "squeed.svg"), "utf8")).replace(/fill="#ffffff"/gi, 'fill="#000000"');
+
+function brandIcon(bbox) {
+  const scale = (ICON_SIZE * GLYPH_HEIGHT_RATIO) / bbox.height;
+  const viewBox = 38;
+  const x = ICON_SIZE / 2 - (bbox.x + bbox.width / 2) * scale;
+  const y = ICON_SIZE / 2 - (bbox.y + bbox.height / 2) * scale;
+  const inner = glyph
+    .replace("<svg ", `<svg x="${x}" y="${y}" `)
+    .replace(/width="38" height="38"/, `width="${viewBox * scale}" height="${viewBox * scale}"`);
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${ICON_SIZE}" height="${ICON_SIZE}" viewBox="0 0 ${ICON_SIZE} ${ICON_SIZE}">
+  <rect width="${ICON_SIZE}" height="${ICON_SIZE}" fill="${BRAND_BACKGROUND}"/>
+  ${inner}
 </svg>`;
+}
 
 const document = {
   checkout: {
@@ -46,9 +60,14 @@ const html = `<!DOCTYPE html><html><head><meta charset="UTF-8">
 
 const browser = await chromium.launch();
 try {
-  const iconPage = await browser.newPage({ viewport: { width: 256, height: 256 } });
-  await iconPage.setContent(`<body style="margin:0;background:transparent">${icon}</body>`);
-  await iconPage.screenshot({ path: join(media, "icon.png"), omitBackground: true });
+  const iconPage = await browser.newPage({ viewport: { width: ICON_SIZE, height: ICON_SIZE } });
+  await iconPage.setContent(`<body style="margin:0">${glyph}</body>`);
+  const bbox = await iconPage.evaluate(() => {
+    const { x, y, width, height } = document.querySelector("svg").getBBox();
+    return { x, y, width, height };
+  });
+  await iconPage.setContent(`<body style="margin:0">${brandIcon(bbox)}</body>`);
+  await iconPage.screenshot({ path: join(media, "icon.png") });
 
   const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
   await page.route(`${origin}/**`, async (route) => {

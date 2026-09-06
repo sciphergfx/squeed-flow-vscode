@@ -1,15 +1,15 @@
 {
   "name": "squeed-flow",
-  "displayName": "Squeed Flow Preview",
+  "displayName": "Squeed Flow",
   "description": "Preview Squeed JSON documents as interactive flow diagrams beside the editor.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "seyiogunbowalesciphergfx",
   "license": "AGPL-3.0",
   "author": "seyi ogunbowale",
   "icon": "media/icon.png",
   "galleryBanner": {
-    "color": "#0f172a",
-    "theme": "dark"
+    "color": "#edecda",
+    "theme": "light"
   },
   "repository": {
     "type": "git",

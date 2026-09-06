@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2
+
+- Display name is now "Squeed Flow".
+- Icon matches the Squeed app icon (black mark on the brand background).
+
 ## 0.1.1
 
 - Use the Squeed mark as the extension icon.

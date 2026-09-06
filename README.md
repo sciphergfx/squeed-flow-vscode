@@ -1,4 +1,4 @@
-# Squeed Flow Preview
+# Squeed Flow
 
 Preview [Squeed](https://github.com/sciphergfx/flow-sdk) JSON documents as interactive flow diagrams, side by side with the editor.
 
