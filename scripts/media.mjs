@@ -10,15 +10,12 @@ const dist = join(root, "dist/webview/");
 const media = join(root, "media");
 await mkdir(media, { recursive: true });
 
+// The Squeed mark is a white glyph on a transparent 38x38 canvas; place it on the
+// gallery banner color. Offsets center the glyph's visual bounds, not the viewBox.
+const glyph = await readFile(join(media, "squeed.svg"), "utf8");
 const icon = `<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
   <rect width="256" height="256" rx="56" fill="#0f172a"/>
-  <g fill="none" stroke="#e2e8f0" stroke-width="10" stroke-linecap="round">
-    <path d="M92 128 H128 C144 128 144 84 160 84 H172"/>
-    <path d="M128 128 C144 128 144 172 160 172 H172"/>
-  </g>
-  <rect x="36" y="104" width="56" height="48" rx="14" fill="#bee3f8" stroke="#3182ce" stroke-width="6"/>
-  <rect x="172" y="60" width="48" height="48" rx="14" fill="#bee3f8" stroke="#3182ce" stroke-width="6"/>
-  <rect x="172" y="148" width="48" height="48" rx="14" fill="#bee3f8" stroke="#3182ce" stroke-width="6"/>
+  ${glyph.replace("<svg ", '<svg x="-24" y="-16" ').replace(/width="38" height="38"/, 'width="300" height="300"')}
 </svg>`;
 
 const document = {

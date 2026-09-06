@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1
+
+- Use the Squeed mark as the extension icon.
+
 ## 0.1.0
 
 - Initial release: preview JSON/JSONC documents as Squeed flow diagrams in a side pane.
