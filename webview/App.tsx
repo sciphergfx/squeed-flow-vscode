@@ -44,7 +44,7 @@ export function App() {
           <FlowDiagram
             json={doc}
             title={title}
-            config={{ colorMode, direction }}
+            config={{ colorMode, direction, editable: true }}
             callbacks={{
               // Preview only: edits stay in this pane until the file changes.
               onJsonChange: (next) => setDoc(next),
