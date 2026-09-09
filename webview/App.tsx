@@ -1,4 +1,8 @@
-import { FlowDiagram, type FlowDirection, type SqueedJson } from "@squeed/flow-sdk";
+import {
+  FlowDiagram,
+  type FlowDirection,
+  type SqueedJson,
+} from "@squeed/flow-sdk";
 import { Component, useEffect, useState, type ReactNode } from "react";
 import type { ColorMode, HostMessage } from "../shared/protocol";
 
@@ -53,7 +57,10 @@ export function App() {
           />
         </DiagramBoundary>
       ) : (
-        <Notice heading={error ? "Cannot preview this document" : "Waiting for JSON…"} detail={error} />
+        <Notice
+          heading={error ? "Cannot preview this document" : "Waiting for JSON…"}
+          detail={error}
+        />
       )}
       {doc && error ? <Banner message={error} /> : null}
     </div>
@@ -84,7 +91,13 @@ function Banner({ message }: { message: string }) {
   );
 }
 
-function Notice({ heading, detail }: { heading: string; detail: string | null }) {
+function Notice({
+  heading,
+  detail,
+}: {
+  heading: string;
+  detail: string | null;
+}) {
   return (
     <div
       style={{
@@ -122,13 +135,23 @@ class DiagramBoundary extends Component<BoundaryProps, BoundaryState> {
     return { error };
   }
 
-  static getDerivedStateFromProps(props: BoundaryProps, state: BoundaryState): Partial<BoundaryState> | null {
-    return props.resetKey !== state.resetKey ? { error: null, resetKey: props.resetKey } : null;
+  static getDerivedStateFromProps(
+    props: BoundaryProps,
+    state: BoundaryState,
+  ): Partial<BoundaryState> | null {
+    return props.resetKey !== state.resetKey
+      ? { error: null, resetKey: props.resetKey }
+      : null;
   }
 
   render() {
     if (this.state.error)
-      return <Notice heading="The diagram failed to render" detail={this.state.error.message} />;
+      return (
+        <Notice
+          heading="The diagram failed to render"
+          detail={this.state.error.message}
+        />
+      );
     return this.props.children;
   }
 }

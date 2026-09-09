@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.3
+
+- Enable double-click node label editing in the preview; edits remain local to the pane.
+
 ## 0.1.2
 
 - Display name is now "Squeed Flow".

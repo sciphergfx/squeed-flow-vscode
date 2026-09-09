@@ -2,7 +2,7 @@
   "name": "squeed-flow",
   "displayName": "Squeed Flow",
   "description": "Preview Squeed JSON documents as interactive flow diagrams beside the editor.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "publisher": "seyiogunbowalesciphergfx",
   "license": "AGPL-3.0",
   "author": "seyi ogunbowale",

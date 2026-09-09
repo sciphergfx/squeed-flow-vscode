@@ -34,9 +34,9 @@ Icon names from the Phosphor family (`Pi…`) are bundled; names from other `rea
 
 ## Commands
 
-| Command                                  | Description                                          |
-| ---------------------------------------- | ---------------------------------------------------- |
-| `Squeed Flow: Open Preview to the Side`  | Open (or reveal) the preview for the active document |
+| Command                                 | Description                                          |
+| --------------------------------------- | ---------------------------------------------------- |
+| `Squeed Flow: Open Preview to the Side` | Open (or reveal) the preview for the active document |
 
 ## Development
 
