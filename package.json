@@ -4,8 +4,8 @@
   "description": "Preview Squeed JSON documents as interactive flow diagrams beside the editor.",
   "version": "0.1.3",
   "publisher": "seyiogunbowalesciphergfx",
-  "license": "AGPL-3.0",
-  "author": "seyi ogunbowale",
+  "license": "MIT",
+  "author": "Seyi Ogunbowale",
   "icon": "media/icon.png",
   "galleryBanner": {
     "color": "#edecda",
@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/sciphergfx/squeed-flow-vscode/issues"
   },
-  "homepage": "https://github.com/sciphergfx/squeed-flow-vscode#readme",
+  "homepage": "https://squeed.co",
   "engines": {
     "vscode": "^1.90.0"
   },

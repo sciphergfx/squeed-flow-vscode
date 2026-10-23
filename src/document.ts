@@ -1,7 +1,6 @@
 import { parseTree, printParseErrorCode, type Node, type ParseError } from "jsonc-parser";
 import type * as vscode from "vscode";
-
-export type FlowDocument = Record<string, unknown> | unknown[];
+import type { FlowDocument } from "../shared/protocol";
 
 export type ParsedDocument =
   | { json: FlowDocument; error: null }

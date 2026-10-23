@@ -1,6 +1,8 @@
 # Squeed Flow
 
-Preview [Squeed](https://github.com/sciphergfx/squeed-flow-sdk) JSON documents as interactive flow diagrams, side by side with the editor.
+Preview [Squeed](https://squeed.co) JSON documents as interactive flow diagrams, side by side with the editor.
+
+[Website](https://squeed.co) · [Live editor](https://app.squeed.co) · [npm](https://www.npmjs.com/package/@squeed/flow-sdk)
 
 ![Preview pane beside a JSON document](media/preview.png)
 
@@ -28,7 +30,7 @@ Any JSON object or array renders. Keys become nodes, nesting becomes hierarchy, 
 }
 ```
 
-See the [`@squeed/flow-sdk` README](https://github.com/sciphergfx/squeed-flow-sdk#readme) for the full set of keys (`$label`, `$icon`, `$content`, `$bgColor`, `$collapsed`, `$target`, `$connections`, …).
+See the [`@squeed/flow-sdk` README](https://www.npmjs.com/package/@squeed/flow-sdk) for the full set of keys (`$label`, `$icon`, `$content`, `$bgColor`, `$collapsed`, `$target`, `$connections`, …).
 
 Icon names from the Phosphor family (`Pi…`) are bundled; names from other `react-icons` families render without an icon to keep the extension small.
 
@@ -53,4 +55,4 @@ Press `F5` to launch the Extension Development Host with the SDK examples folder
 
 ## License
 
-AGPL-3.0. The bundled `@squeed/flow-sdk` is also AGPL-3.0.
+MIT. The bundled `@squeed/flow-sdk` is also MIT.
